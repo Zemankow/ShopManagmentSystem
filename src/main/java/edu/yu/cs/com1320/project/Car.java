@@ -7,13 +7,13 @@ public class Car {
     String vin, make, model;
     Date year;
     double odometer;
-    List<MaintnenceJob> previous, current, recomended;//todo make list
+    List<MaintenanceJob> previous, current, recomended;//todo make list
 
     public Car(){
         //fixme
     }
 
-    private List<MaintnenceJob> getRecomendedMaintanancec(){
+    private List<MaintenanceJob> getRecomendedMaintanancec(){
         return null;
     }
 
