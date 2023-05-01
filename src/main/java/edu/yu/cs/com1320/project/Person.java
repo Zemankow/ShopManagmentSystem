@@ -1,4 +1,4 @@
-package org.example;
+package edu.yu.cs.com1320.project;
 
 public interface Person {
     String name = null;

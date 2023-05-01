@@ -1,4 +1,4 @@
-package org.example;
+package edu.yu.cs.com1320.project;
 
 import java.util.*;
 public class Customer implements Person{

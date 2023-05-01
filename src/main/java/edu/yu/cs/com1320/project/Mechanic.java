@@ -1,7 +1,6 @@
-package org.example;
+package edu.yu.cs.com1320.project;
 
 import java.util.Date;
-import java.util.List;
 
 public class Mechanic implements Person{
     String name;
