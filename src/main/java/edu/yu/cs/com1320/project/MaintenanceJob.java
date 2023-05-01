@@ -5,10 +5,10 @@ import java.util.Date;
 
 public class MaintenanceJob {
     List<Mechanic> mechanics;
-    public enum maintananceTypes {OIL,Brakes,Tires}
+    public enum maintenanceTypes {OIL,Brakes,Tires}
     double odometer;
     String description;
-    Date date;
+    // Date date;
     double price;
     boolean paid;
 
@@ -20,9 +20,12 @@ public class MaintenanceJob {
     public String getDescription(){
         return description;
     }
+   /*
     public Data getDate(){
         return date;
     }
+    */
+
     public double getOdometer(){
         return odometer;
     }
@@ -39,9 +42,11 @@ public class MaintenanceJob {
     public void setDescription(String description){
         this.description =description;
     }
+    /*
     public void setDate(Date date){
         this.date = date;
     }
+     */
     public void setOdometer(double odometer){
         this.odometer = odometer;
     }

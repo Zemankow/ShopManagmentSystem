@@ -1,5 +1,6 @@
 package edu.yu.cs.com1320.project;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -9,13 +10,27 @@ public class Car {
     double odometer;
     List<MaintenanceJob> previous, current, recomended;//todo make list
 
-    public Car(){
-        //fixme
+    public Car(String vin, String make, String model,Date year, double odometer){
+        this.vin = vin;
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.odometer = odometer;
+        previous = new ArrayList<>();
+        current = new ArrayList<>();
+        recomended = new ArrayList<>();
     }
 
-    private List<MaintenanceJob> getRecomendedMaintanancec(){
+    public void addMaintenanceJob(MaintenanceJob maintenanceJob){
+        current.add(maintenanceJob);
+    }
+    public double getOdometer(){
+        return odometer;
+    }
+    public List<MaintenanceJob> getRecomendedMaintanancec(){
         return null;
     }
+
 
 
 }
