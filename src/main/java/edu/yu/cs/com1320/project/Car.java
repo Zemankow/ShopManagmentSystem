@@ -8,7 +8,12 @@ public class Car {
     String vin, make, model;
     Date year;
     double odometer;
-    List<MaintenanceJob> previous, current, recomended;//todo make list
+    List<MaintenanceJob> previous;
+
+
+
+    List<MaintenanceJob> current;
+    List<MaintenanceJob> recomended;//todo make list
 
     public Car(String vin, String make, String model,Date year, double odometer){
         this.vin = vin;
@@ -24,11 +29,25 @@ public class Car {
     public void addMaintenanceJob(MaintenanceJob maintenanceJob){
         current.add(maintenanceJob);
     }
+
+
+    //Getters
     public double getOdometer(){
         return odometer;
     }
     public List<MaintenanceJob> getRecomendedMaintanancec(){
         return null;
+    }
+    public List<MaintenanceJob> getPrevious() {
+        return previous;
+    }
+
+    public List<MaintenanceJob> getCurrent() {
+        return current;
+    }
+
+    public List<MaintenanceJob> getRecomended() {
+        return recomended;
     }
 
 
