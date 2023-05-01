@@ -5,9 +5,7 @@ import java.util.Date;
 public class Mechanic extends Person{
     Date yearHired;
     public Mechanic(String name, String address, int phoneNumber, Date yearHired){
-        this.name = name;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
+        super(name,address,phoneNumber);
         this.yearHired=yearHired;
     }
 
