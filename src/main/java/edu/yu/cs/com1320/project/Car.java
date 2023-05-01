@@ -9,11 +9,8 @@ public class Car {
     Date year;
     double odometer;
     List<MaintenanceJob> previous;
-
-
-
     List<MaintenanceJob> current;
-    List<MaintenanceJob> recomended;//todo make list
+    List<MaintenanceJob> recommended;
 
     public Car(String vin, String make, String model,Date year, double odometer){
         this.vin = vin;
@@ -23,9 +20,11 @@ public class Car {
         this.odometer = odometer;
         previous = new ArrayList<>();
         current = new ArrayList<>();
-        recomended = new ArrayList<>();
+        recommended = new ArrayList<>();
     }
 
+
+    //Setters
     public void addMaintenanceJob(MaintenanceJob maintenanceJob){
         current.add(maintenanceJob);
     }
@@ -35,9 +34,7 @@ public class Car {
     public double getOdometer(){
         return odometer;
     }
-    public List<MaintenanceJob> getRecomendedMaintanancec(){
-        return null;
-    }
+
     public List<MaintenanceJob> getPrevious() {
         return previous;
     }
@@ -46,8 +43,8 @@ public class Car {
         return current;
     }
 
-    public List<MaintenanceJob> getRecomended() {
-        return recomended;
+    public List<MaintenanceJob> getRecommended() {
+        return recommended;
     }
 
 
