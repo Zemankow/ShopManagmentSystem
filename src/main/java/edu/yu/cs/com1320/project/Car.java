@@ -35,8 +35,8 @@ public class Car {
         return odometer;
     }
 
-    public List<MaintenanceJob> getPrevious() {
-        return previous;
+    public List<MaintenanceJob> getPreviousMaintenance() {
+        return List.copyOf(previous);
     }
 
     public List<MaintenanceJob> getCurrent() {

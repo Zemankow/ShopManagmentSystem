@@ -1,32 +1,42 @@
 package edu.yu.cs.com1320.project;
 
+import java.time.LocalDateTime;
 import java.util.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class MaintenanceJob {
     List<Mechanic> mechanics;
     public enum maintenanceTypes {OIL,Brakes,Tires}
     public enum maintenanceStage {OIL,Brakes,Tires}
 
-    double odometer;
-    String description;
-    // Date date;
-    double price;
-    boolean paid;
+    private double odometer;
+    private String originalComplaint,mechanicNotes;
+    private LocalDateTime clock;
+    private double price;
+    private boolean paid;
+
+    public MaintenanceJob(int odo,MaintenanceType type,String complaint){
+        this.odometer = odo;
+        this.maintenanceType=type;
+        this.originalComplaint = complaint;
+        maintenanceStage=MaintenanceStage.ReadyForInspection;
+    }
 
 
     //Getters
     public List<Mechanic> getMechanics(){
         return new ArrayList<>(mechanics);
     }
-    public String getDescription(){
-        return description;
+    public String originalComplaint(){
+        return originalComplaint;
     }
-   /*
-    public Data getDate(){
-        return date;
+    public String getMechanicNotes(){
+        return mechanicNotes;
     }
-    */
+
+    public LocalDateTime getDate(){
+        return clock;
+    }
 
     public double getOdometer(){
         return odometer;
@@ -41,14 +51,11 @@ public class MaintenanceJob {
     public void addMechanic(Mechanic mechanic){
 
     }
-    public void setDescription(String description){
-        this.description =description;
+    public void updateMechanicNotes(String note){
+        String entry = "/n----------------"+clock+"n----------------/n"+note;
+        this.mechanicNotes =mechanicNotes+=entry;
     }
-    /*
-    public void setDate(Date date){
-        this.date = date;
-    }
-     */
+
     public void setOdometer(double odometer){
         this.odometer = odometer;
     }
