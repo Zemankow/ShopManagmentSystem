@@ -5,9 +5,12 @@ import java.util.*;
 import java.time.LocalDate;
 
 public class MaintenanceJob {
-    List<Mechanic> mechanics;
-    public enum maintenanceTypes {OIL,Brakes,Tires}
-    public enum maintenanceStage {OIL,Brakes,Tires}
+    private List<Mechanic> mechanics;
+    public enum MaintenanceType {Oil,Brakes,Tires,Suspension,AC,Coolant,Lights,Engine,Transmission,BodyWork, Misc}
+    public enum MaintenanceStage {ReadyForInspection,CustomerApproval,WaitingForParts,ReadyForWork,WorkBeingPreformed,WorkFinished}
+
+    private MaintenanceType maintenanceType;
+    private MaintenanceStage maintenanceStage;
 
     private double odometer;
     private String originalComplaint,mechanicNotes;
@@ -25,7 +28,7 @@ public class MaintenanceJob {
 
     //Getters
     public List<Mechanic> getMechanics(){
-        return new ArrayList<>(mechanics);
+        return List.copyOf(mechanics);
     }
     public String originalComplaint(){
         return originalComplaint;
@@ -47,8 +50,18 @@ public class MaintenanceJob {
     public boolean wasPaid(){
         return paid;
     }
+
+    public MaintenanceType getMaintenanceType(){
+        return maintenanceType;
+    }
+    public MaintenanceStage getMaintenanceStage(){
+        return maintenanceStage;
+    }
     //Setters
     public void addMechanic(Mechanic mechanic){
+        if(mechanic!=null){
+            this.mechanics.add(mechanic);
+        }
 
     }
     public void updateMechanicNotes(String note){
@@ -66,5 +79,20 @@ public class MaintenanceJob {
         this.paid = paid;
     }
 
+    public void setMaintenanceType(MaintenanceType maintenanceType){
+        this.maintenanceType = maintenanceType;
+    }
+    public void setMaintenanceStage(MaintenanceStage maintenanceStage){
+        this.maintenanceStage = maintenanceStage;
+    }
+
+    @Override
+    public String toString(){
+        String type = "Maintenance Type: "+maintenanceType;
+        String orig = "Original Complaint: "+originalComplaint;
+        String div = "/n----------------/n";
+        String mech = "Mechanic Notes: "+mechanicNotes;
+        return type+orig+div+mech;
+    }
 
 }

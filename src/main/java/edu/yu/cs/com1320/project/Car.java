@@ -1,18 +1,23 @@
 package edu.yu.cs.com1320.project;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-public class Car {
-    String vin, make, model;
-    Date year;
-    double odometer;
-    List<MaintenanceJob> previous;
-    List<MaintenanceJob> current;
-    List<MaintenanceJob> recommended;
+public class Car implements Comparable<Car>{
+    private String vin, make, model;
+    private LocalDate year;
+    private LocalDate carNeeded;
+    private double odometer;
+    private List<MaintenanceJob> previous;
+    private List<MaintenanceJob> current;
+    private List<MaintenanceJob> recommended;
 
-    public Car(String vin, String make, String model,Date year, double odometer){
+
+
+    public Car(String vin, String make, String model,LocalDate year, double odometer){
         this.vin = vin;
         this.make = make;
         this.model = model;
@@ -28,9 +33,21 @@ public class Car {
     public void addMaintenanceJob(MaintenanceJob maintenanceJob){
         current.add(maintenanceJob);
     }
+    public void setCarNeeded(LocalDate newDate){
+        this.carNeeded = newDate;
+    }
 
 
     //Getters
+    public String getVin(){
+        return vin;
+    }
+    public String getMake(){
+        return make;
+    }
+    public String getModel(){
+        return model;
+    }
     public double getOdometer(){
         return odometer;
     }
@@ -39,12 +56,58 @@ public class Car {
         return List.copyOf(previous);
     }
 
-    public List<MaintenanceJob> getCurrent() {
-        return current;
+    public List<MaintenanceJob> getCurrentMaintenance() {
+        return List.copyOf(current);
+
     }
 
-    public List<MaintenanceJob> getRecommended() {
-        return recommended;
+    public List<MaintenanceJob> getRecommendedMaintenance() {
+        return List.copyOf(recommended);
+    }
+    public LocalDate getYear(){
+        return year;
+    }
+
+
+
+    public void removePreviousMaintenance(MaintenanceJob maintenanceJob) {
+        previous.remove(maintenanceJob);
+    }
+
+    public void removeCurrentMaintenance(MaintenanceJob maintenanceJob) {
+        current.remove(maintenanceJob);
+    }
+
+    public void removeRecommendedMaintenance(MaintenanceJob maintenanceJob) {
+        recommended.remove(maintenanceJob);
+    }
+
+
+    public void addPreviousMaintenance(MaintenanceJob maintenanceJob) {
+        if(maintenanceJob!=null) {
+            previous.add(maintenanceJob);
+        }
+    }
+
+    public void addCurrentMaintenance(MaintenanceJob maintenanceJob) {
+        if(maintenanceJob!=null) {
+            current.add(maintenanceJob);
+        }
+    }
+
+    public void addRecommendedMaintenance(MaintenanceJob maintenanceJob) {
+        if(maintenanceJob!=null) {
+            recommended.add(maintenanceJob);
+        }
+    }
+
+    public LocalDate getCarNeeded(){
+        return carNeeded;
+    }
+
+    @Override
+    public int compareTo(Car other) {
+        return this.carNeeded.compareTo(other.getCarNeeded());
     }
 
 
