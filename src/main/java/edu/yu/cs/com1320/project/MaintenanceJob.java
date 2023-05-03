@@ -6,6 +6,8 @@ import java.util.Date;
 public class MaintenanceJob {
     List<Mechanic> mechanics;
     public enum maintenanceTypes {OIL,Brakes,Tires}
+    public enum maintenanceStage {OIL,Brakes,Tires}
+
     double odometer;
     String description;
     // Date date;
