@@ -1,7 +1,6 @@
 package edu.yu.cs.com1320.project;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Mechanic extends Person{
     private LocalDate yearHired;
@@ -15,8 +14,7 @@ public class Mechanic extends Person{
     }
 
     public double getYearsOnJob(){
-        return -1;
-        //FIXME
+        return LocalDate.now().getYear() - yearHired.getYear();
     }
 
 }
