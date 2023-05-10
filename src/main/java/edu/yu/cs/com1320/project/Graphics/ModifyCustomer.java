@@ -22,6 +22,9 @@ public class ModifyCustomer  implements ActionListener {
     JButton modify;
 
     JButton mainMenu;
+
+    JButton addMaintenance;
+
     Customer customer;
 
     static JTextField name;
@@ -46,6 +49,9 @@ public class ModifyCustomer  implements ActionListener {
         remove = new JButton("Remove");
         mainMenu = new JButton("Main Menu");
         modify = new JButton("Modify");
+        addMaintenance = new JButton("Add Maintenance");
+
+        addMaintenance.addActionListener(this);
 
         modify.addActionListener(this);
 
@@ -122,7 +128,7 @@ public class ModifyCustomer  implements ActionListener {
         frame.getContentPane().add(remove);
         frame.getContentPane().add(mainMenu);
         frame.getContentPane().add(modify);
-
+        frame.getContentPane().add(addMaintenance);
         frame.getContentPane().repaint();
     }
     @Override
@@ -158,6 +164,10 @@ public class ModifyCustomer  implements ActionListener {
 
             }
             else if(s.equals("Main Menu")){
+                frame.getContentPane().removeAll();
+                MainWindow main = new MainWindow(frame,shop);
+            }
+            else if(s.equals("Add Maintenance")){
                 frame.getContentPane().removeAll();
                 MainWindow main = new MainWindow(frame,shop);
             }

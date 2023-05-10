@@ -33,6 +33,7 @@ public class MaintanaceMarkDone implements ActionListener {
 
     }
     private void paintGUI(){
+        MaintanaceHashTable.clear();
         markFinished = new JButton("Completed");
         mainMenu = new JButton("Main Menu");
 
