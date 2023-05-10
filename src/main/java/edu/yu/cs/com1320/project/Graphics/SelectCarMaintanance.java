@@ -32,7 +32,7 @@ public class SelectCarMaintanance implements ActionListener {
     {
         frame = tmpFrame;
         frame.setLayout(new FlowLayout());
-
+        this.shop = shop;
         for(Car car: shop.getBay()){
             CarHashtable.put(car.toString(),car);
         }

@@ -149,10 +149,19 @@ public class AddCustomer implements ActionListener {
         String s = e.getActionCommand();
         if (s.equals("submit")) {
             // set the text of the label to the text of the field
-
-            Customer customer = new Customer(name.getText(),address.getText(),Integer.parseInt(phoneNumber.getText()));
-            Car car = new Car(vin.getText(),make.getText(),model.getText(), LocalDate.now(),Integer.parseInt(odometer.getText()));
-            customer.addCar(car);
+            int phoneNumberInt = 0;
+            if(!phoneNumber.getText().isEmpty()){
+                phoneNumberInt= Integer.parseInt(phoneNumber.getText());
+            }
+            Customer customer = new Customer(name.getText(),address.getText(),phoneNumberInt);
+            int odometerInt = 0;
+            if(!odometer.getText().isEmpty()){
+                odometerInt= Integer.parseInt(odometer.getText());
+            }
+            Car car = new Car(vin.getText(),make.getText(),model.getText(), LocalDate.now(),odometerInt);
+            if(car.isComplete()){
+                customer.addCar(car);
+            }
             shop.addCustomer(customer);
             frame.getContentPane().removeAll();
             frame.getContentPane().repaint();

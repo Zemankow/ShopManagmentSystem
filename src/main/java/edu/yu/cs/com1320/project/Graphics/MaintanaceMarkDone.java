@@ -15,15 +15,18 @@ public class MaintanaceMarkDone implements ActionListener {
 
     JFrame frame;
     JButton markFinished;
+    JButton mainMenu;
 
     Hashtable<String,MaintenanceJob> MaintanaceHashTable = new Hashtable<>();
 
     Car car;
+    Shop shop;
     MaintenanceJob jobSelected;
 
     public MaintanaceMarkDone(JFrame tmpFrame, Shop shop, Car car){
         frame = tmpFrame;
         frame.setLayout(new FlowLayout());
+        this.shop = shop;
         this.car = car;
         paintGUI();
 
@@ -31,6 +34,7 @@ public class MaintanaceMarkDone implements ActionListener {
     }
     private void paintGUI(){
         markFinished = new JButton("Completed");
+        mainMenu = new JButton("Main Menu");
 
         for(MaintenanceJob job: car.getCurrentMaintenance()){
             MaintanaceHashTable.put(job.toString(),job);
@@ -38,6 +42,8 @@ public class MaintanaceMarkDone implements ActionListener {
         JComboBox maintanceCurrent = new JComboBox(MaintanaceHashTable.keySet().toArray());
         maintanceCurrent.addActionListener(this);
         markFinished.addActionListener(this);
+        mainMenu.addActionListener(this);
+
 
         //Set up the picture.
         frame.getContentPane().setFont(frame.getContentPane().getFont().deriveFont(Font.ITALIC));
@@ -50,6 +56,8 @@ public class MaintanaceMarkDone implements ActionListener {
 
         frame.getContentPane().add(maintanceCurrent, BorderLayout.PAGE_START);
         frame.getContentPane().add(markFinished);
+        frame.getContentPane().add(mainMenu);
+
         frame.getContentPane().repaint();
     }
     @Override
@@ -67,12 +75,21 @@ public class MaintanaceMarkDone implements ActionListener {
             if (s.equals("Completed")) {
 
                 frame.getContentPane().removeAll();
-                MaintanaceHashTable.remove(jobSelected.toString());
-                car.removeCurrentMaintenance(jobSelected);
-                car.addPreviousMaintenance(jobSelected);
+                if(jobSelected!=null) {
+                    MaintanaceHashTable.remove(jobSelected.toString());
+                    car.removeCurrentMaintenance(jobSelected);
+                    car.addPreviousMaintenance(jobSelected);
+                    if (car.getCurrentMaintenance().isEmpty()) {
+                        shop.moveToReadyForPickup(car);
+                    }
+                }
                 paintGUI();
 
 
+            }
+            else if(s.equals("Main Menu")){
+                frame.getContentPane().removeAll();
+                MainWindow main = new MainWindow(frame,shop);
             }
         }
 

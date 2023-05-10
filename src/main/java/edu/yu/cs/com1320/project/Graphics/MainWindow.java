@@ -21,13 +21,16 @@ public class MainWindow implements ActionListener {
     // JButton
     JButton addCustomerButton;
     JButton markMaintananceDone;
+    JButton findCustomer;
+    JButton listCustomer;
+
 
     Shop shop;
 
     // label to display text
 
     // default constructor
-    public MainWindow(JFrame tmpFrame,Shop shop)
+    public MainWindow(JFrame tmpFrame,Shop tmpShop)
     {
         frame = tmpFrame;
         frame.setLayout(new GridLayout());
@@ -35,8 +38,10 @@ public class MainWindow implements ActionListener {
 
         addCustomerButton = new JButton("Add Customer");
         markMaintananceDone = new JButton("Mark Maintanance Done");
+        findCustomer = new JButton("Find Customer");
+        listCustomer = new JButton("List Customer");
 
-        this.shop = shop;
+        this.shop = tmpShop;
 
         // addActionListener to button
         addCustomerButton.setBounds(200,0,200,30);
@@ -44,17 +49,19 @@ public class MainWindow implements ActionListener {
 
         markMaintananceDone.setBounds(0,0,200,30);
         markMaintananceDone.addActionListener(this);
-
+        findCustomer.setBounds(400,0,200,30);
+        findCustomer.addActionListener(this);
+        listCustomer.setBounds(600,0,200,30);
+        listCustomer.addActionListener(this);
         // create a panel to add buttons and textfield
         frame.getContentPane().add(addCustomerButton);
         frame.getContentPane().add(markMaintananceDone);
+        frame.getContentPane().add(findCustomer);
+        frame.getContentPane().add(listCustomer);
 
 
         frame.getContentPane().repaint();
-        Car car = new Car("1","Toyota", "2019", LocalDate.now(),10000);
-        car.addCurrentMaintenance(new MaintenanceJob(200000, MaintenanceJob.MaintenanceType.AC,"Ac is not working properly"));
-        shop.addCar(car);
-        shop.moveCarToBay();
+
 
     }
 
@@ -74,7 +81,16 @@ public class MainWindow implements ActionListener {
             frame.getContentPane().repaint();
             SelectCarMaintanance selectCarMaintanance = new SelectCarMaintanance(frame,shop);
         }
-
+        else if(s.equals("Find Customer")){
+            frame.getContentPane().removeAll();
+            frame.getContentPane().repaint();
+            FindCustomer findCustomer = new FindCustomer(frame,shop);
+        }
+        else if(s.equals("List Customer")){
+            frame.getContentPane().removeAll();
+            frame.getContentPane().repaint();
+            ListCustomers listCustomers = new ListCustomers(frame,shop);
+        }
 
     }
 }

@@ -28,4 +28,22 @@ public class Person {
     public void setPhoneNumber(int newPhoneNumber){
         phoneNumber = newPhoneNumber;
     }
+
+    @Override
+    public String toString() {
+        return name +", "+ address+", " +phoneNumber;
+    }
+
+    @Override
+    public int hashCode(){
+        return toString().hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if(obj instanceof Person tmpCustomer){
+            return tmpCustomer.toString().equals(this.toString());
+        }
+        return false;
+    }
 }

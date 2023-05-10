@@ -18,6 +18,7 @@ public class Car implements Comparable<Car>{
 
 
     public Car(String vin, String make, String model,LocalDate year, int odometer){
+
         this.vin = vin;
         this.make = make;
         this.model = model;
@@ -67,7 +68,12 @@ public class Car implements Comparable<Car>{
     public LocalDate getYear(){
         return year;
     }
-
+    public boolean isComplete(){
+        if(vin.isEmpty()||make.isEmpty()||model.isEmpty()||year==null){
+            return false;
+        }
+        return true;
+    }
 
 
     public void removePreviousMaintenance(MaintenanceJob maintenanceJob) {
@@ -112,7 +118,11 @@ public class Car implements Comparable<Car>{
 
     @Override
     public String toString() {
-        return make + "," + model + "," + year .getYear() + "," + vin;
+        int yearInt =0;
+        if(year!=null) {
+            yearInt = year.getYear();
+        }
+        return make + "," + model + "," + yearInt + "," + vin;
     }
 
     @Override
