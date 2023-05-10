@@ -13,8 +13,8 @@ public class Shop {
     private List<Customer> customers;
 
 
-    public Shop(){
-        this.baySize = 4;
+    public Shop(int baySize){
+        this.baySize = baySize;
         this.requiresWork = new PriorityQueue<>();
         this.bay = new ArrayList<>();
         this.readyForPickup = new ArrayList<>();

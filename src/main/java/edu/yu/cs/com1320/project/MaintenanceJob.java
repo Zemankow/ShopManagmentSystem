@@ -21,7 +21,7 @@ public class MaintenanceJob {
     public MaintenanceJob(int odo,MaintenanceType type,String complaint){
         this.odometer = odo;
         this.maintenanceType=type;
-        this.preamble = "Creating Work Order at "+clock.toString()+"\n";
+        this.preamble = "Creating Work Order at "+clock.toString()+" \n";
         this.originalComplaint = complaint;
         maintenanceStage=MaintenanceStage.ReadyForInspection;
     }

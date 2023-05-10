@@ -33,11 +33,10 @@ public class AddMaintenance implements ActionListener {
 
         frame = tmpFrame;
 
-        frame.setLayout(new FlowLayout());
         this.customer = customer;
         this.shop = shop;
         this.car = car;
-
+        frame.getContentPane().repaint();
         paintGUI();
     }
 
@@ -60,9 +59,14 @@ public class AddMaintenance implements ActionListener {
         formatter.setMinimum(0);
         formatter.setMaximum(Integer.MAX_VALUE);
         formatter.setAllowsInvalid(false);
+        // If you want the value to be committed on each keystroke instead of focus lost
+        formatter.setCommitsOnValidEdit(true);
+
 
         odometer = new JFormattedTextField(formatter);
-        odometer.setBounds(100,220,200,30);
+        odometer.setBounds(100,60,200,30);
+        odometer.setColumns(16);
+
         odometer.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent ke) {
                 String value = odometer.getText();
@@ -78,11 +82,13 @@ public class AddMaintenance implements ActionListener {
         });
 
         JLabel carOdometer = new JLabel("Odometer:");
-        carOdometer.setBounds(0,220,100,30);
+        carOdometer.setBounds(0,00,100,30);
         frame.getContentPane().add(carOdometer);
         frame.getContentPane().add(odometer);
 
         JComboBox maintenanceTypes = new JComboBox(MaintenanceJob.MaintenanceType.values());
+        maintenanceTypes.setBounds(0,0,100,30);
+
         maintenanceTypes.addActionListener(this);
         frame.getContentPane().setFont(frame.getContentPane().getFont().deriveFont(Font.ITALIC));
 
