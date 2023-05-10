@@ -59,6 +59,10 @@ public class SelectCarMaintanance implements ActionListener {
         JComboBox cb = (JComboBox)e.getSource();
         String carName = (String)cb.getSelectedItem();
         Car carToUpdate = CarHashtable.get(carName);
+        frame.getContentPane().removeAll();
+        frame.getContentPane().repaint();
+        MaintanaceMarkDone maintanaceMarkDone = new MaintanaceMarkDone(frame,shop,carToUpdate);
+
 
     }
 }

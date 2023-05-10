@@ -10,14 +10,14 @@ public class Car implements Comparable<Car>{
     private String vin, make, model;
     private LocalDate year;
     private LocalDate carNeeded;
-    private double odometer;
+    private int odometer;
     private List<MaintenanceJob> previous;
     private List<MaintenanceJob> current;
     private List<MaintenanceJob> recommended;
 
 
 
-    public Car(String vin, String make, String model,LocalDate year, double odometer){
+    public Car(String vin, String make, String model,LocalDate year, int odometer){
         this.vin = vin;
         this.make = make;
         this.model = model;
