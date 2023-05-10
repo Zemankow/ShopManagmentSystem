@@ -110,6 +110,16 @@ public class Car implements Comparable<Car>{
         return this.carNeeded.compareTo(other.getCarNeeded());
     }
 
+    @Override
+    public String toString() {
+        return make + "," + model + "," + year .getYear() + "," + vin;
+    }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Car tmpCar){
+            return tmpCar.toString().equals(this.toString());
+        }
+        return false;
+    }
 }

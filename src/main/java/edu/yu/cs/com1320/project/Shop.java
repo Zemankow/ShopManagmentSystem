@@ -4,6 +4,8 @@ import java.util.*;
 
 public class Shop {
 
+
+
     private List<Car> bay;
     private Queue<Car> requiresWork;
     private List<Car> readyForPickup;
@@ -19,13 +21,18 @@ public class Shop {
     public void addCar(Car car){
         this.requiresWork.add(car);
     }
+    public void moveCarToBay(){
+        if(!requiresWork.isEmpty()){
+            bay.add(requiresWork.remove());
+        }
+    }
     public List<Car> getReadyForPickup(){
         return List.copyOf(readyForPickup);
     }
     public List<Customer> getCustomers(){
         return List.copyOf(customers);
     }
-    public List<Car> carsInBay(){
+    public List<Car> getBay(){
         return List.copyOf(bay);
     }
     public void moveToReadyForPickup(Car car){
