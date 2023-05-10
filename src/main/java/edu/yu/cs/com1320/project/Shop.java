@@ -21,6 +21,32 @@ public class Shop {
     public void addCar(Car car){
         this.requiresWork.add(car);
     }
+    /**
+     * Generates a work order for a given car and adds the car to req. wrk. list.
+     * @param car the car to attach the order to
+     * @param type the type of maintenance
+     * @param complaint the inital complaint
+     * */
+    public void makeNewWorkOrder(Car car, MaintenanceJob.MaintenanceType type, String complaint){
+        Car c = getCarFromStorage(car);
+        c.addMaintenanceJob(type,complaint);
+        requiresWork.add(c);
+    }
+    /**
+     * Gets car from storage if belongs to a customer
+     * @param car the car to search for
+     * @return the car stored or the same car if new*/
+    private Car getCarFromStorage(Car car){
+        Car ourcar = car;
+        for(Customer cus : customers){
+            for(Car ca : cus.getCars()){
+                if(ca.equals(car)){
+                    ourcar=ca;
+                }
+            }
+        }
+        return ourcar;
+    }
     public void moveCarToBay(){
         if(!requiresWork.isEmpty()){
             bay.add(requiresWork.remove());

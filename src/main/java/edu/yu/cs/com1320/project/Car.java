@@ -31,8 +31,9 @@ public class Car implements Comparable<Car>{
 
 
     //Setters
-    public void addMaintenanceJob(MaintenanceJob maintenanceJob){
-        current.add(maintenanceJob);
+    public void addMaintenanceJob(MaintenanceJob.MaintenanceType type, String complaint){
+        MaintenanceJob mj = new MaintenanceJob(this.odometer,type,complaint);
+        current.add(mj);
     }
     public void setCarNeeded(LocalDate newDate){
         this.carNeeded = newDate;
@@ -127,8 +128,15 @@ public class Car implements Comparable<Car>{
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof Car tmpCar){
-            return tmpCar.toString().equals(this.toString());
+        if(this==obj) return true;
+        if(obj instanceof Car){
+            obj = (Car)obj;
+            if(((Car) obj).vin.equals(this.vin)
+                && ((Car) obj).make.equals(this.make)
+                &&((Car) obj).model.equals(this.model)
+                && ((Car) obj).year.equals(this.year)){
+                return true;
+            }
         }
         return false;
     }

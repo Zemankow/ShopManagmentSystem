@@ -13,14 +13,15 @@ public class MaintenanceJob {
     private MaintenanceStage maintenanceStage;
 
     private double odometer;
-    private String originalComplaint,mechanicNotes;
-    private LocalDateTime clock;
+    private String originalComplaint,mechanicNotes, preamble;
+    private static LocalDateTime clock;
     private double price;
     private boolean paid;
 
     public MaintenanceJob(int odo,MaintenanceType type,String complaint){
         this.odometer = odo;
         this.maintenanceType=type;
+        this.preamble = "Creating Work Order at "+clock.toString()+"\n";
         this.originalComplaint = complaint;
         maintenanceStage=MaintenanceStage.ReadyForInspection;
     }
@@ -65,7 +66,7 @@ public class MaintenanceJob {
 
     }
     public void updateMechanicNotes(String note){
-        String entry = "/n----------------"+clock+"n----------------/n"+note;
+        String entry = "\n----------------"+clock.toString()+"----------------\n"+note;
         this.mechanicNotes =mechanicNotes+=entry;
     }
 
@@ -90,9 +91,9 @@ public class MaintenanceJob {
     public String toString(){
         String type = "Maintenance Type: "+maintenanceType;
         String orig = "Original Complaint: "+originalComplaint;
-        String div = "/n----------------/n";
+        String div = "\n----------------\n";
         String mech = "Mechanic Notes: "+mechanicNotes;
-        return type+orig+div+mech;
+        return ""+this.preamble+type+orig+div+mech;
     }
 
 }

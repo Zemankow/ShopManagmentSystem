@@ -3,9 +3,9 @@ package edu.yu.cs.com1320.project;
 public class Person {
     private String name = null;
     private String address = null;
-    private int phoneNumber = -1;
+    private long phoneNumber = -1;
 
-    Person(String name, String address, int phoneNumber){
+    Person(String name, String address, long phoneNumber){
         this.name= name;
         this.address = address;
         this.phoneNumber = phoneNumber;
@@ -16,7 +16,7 @@ public class Person {
     public String getAddress(){
         return address;
     }
-    public int getPhoneNumber(){
+    public long getPhoneNumber(){
         return phoneNumber;
     }
     public void setName(String newName){

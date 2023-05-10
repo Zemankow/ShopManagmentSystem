@@ -32,4 +32,20 @@ public class Main {
         MainWindow mainWindow = new MainWindow(frame,shop);
 
     }
+    private Car makeCar(){
+        return new Car("4T1B11HK17845","Toyota", "Camry", LocalDate.of(2019,7,1),23000);
+    }
+    private Customer makeCustomer(){
+        long num = 12056667777;
+        return new Customer("jim","wilbur st.",num);
+    }
+    private void addMaintTest(){
+        shop.addCustomer(makeCustomer());
+        Customer index = shop.getCustomers().indexOf(makeCustomer());
+    }
+
+
+
+
+
 }
