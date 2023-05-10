@@ -6,6 +6,7 @@ public class Shop {
 
 
 
+    int baySize=0;
     private List<Car> bay;
     private Queue<Car> requiresWork;
     private List<Car> readyForPickup;
@@ -13,6 +14,7 @@ public class Shop {
 
 
     public Shop(){
+        this.baySize = 4;
         this.requiresWork = new PriorityQueue<>();
         this.bay = new ArrayList<>();
         this.readyForPickup = new ArrayList<>();
@@ -23,6 +25,10 @@ public class Shop {
      * You should use #makeNewWorkOrder()*/
     public void addCar(Car car){
         this.requiresWork.add(car);
+
+        if(bay.size()<baySize){
+            moveCarToBay();
+        }
     }
     /**
      * Generates a work order for a given car and adds the car to req. wrk. list.
@@ -30,11 +36,7 @@ public class Shop {
      * @param type the type of maintenance
      * @param complaint the inital complaint
      * */
-    public void makeNewWorkOrder(Car car, MaintenanceJob.MaintenanceType type, String complaint){
-        Car c = getCarFromStorage(car);
-        c.addMaintenanceJob(type,complaint);
-        requiresWork.add(c);
-    }
+
     /**
      * Gets car from storage if belongs to a customer
      * @param car the car to search for
@@ -75,6 +77,9 @@ public class Shop {
         if(customer!=null){
             this.customers.remove(customer);
         }
+    }
+    public void removeReadyForPickup(Car car){
+        this.readyForPickup.remove(car);
     }
 
 }

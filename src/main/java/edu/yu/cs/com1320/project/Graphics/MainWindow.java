@@ -23,6 +23,7 @@ public class MainWindow implements ActionListener {
     JButton markMaintananceDone;
     JButton findCustomer;
     JButton listCustomer;
+    JButton readyForPickup;
 
 
     Shop shop;
@@ -40,6 +41,7 @@ public class MainWindow implements ActionListener {
         markMaintananceDone = new JButton("Mark Maintanance Done");
         findCustomer = new JButton("Find Customer");
         listCustomer = new JButton("List Customer");
+        readyForPickup = new JButton("Ready For Pickup");
 
         this.shop = tmpShop;
 
@@ -53,11 +55,15 @@ public class MainWindow implements ActionListener {
         findCustomer.addActionListener(this);
         listCustomer.setBounds(600,0,200,30);
         listCustomer.addActionListener(this);
+
+        readyForPickup.setBounds(800,0,200,30);
+        readyForPickup.addActionListener(this);
         // create a panel to add buttons and textfield
         frame.getContentPane().add(addCustomerButton);
         frame.getContentPane().add(markMaintananceDone);
         frame.getContentPane().add(findCustomer);
         frame.getContentPane().add(listCustomer);
+        frame.getContentPane().add(readyForPickup);
 
 
         frame.getContentPane().repaint();
@@ -90,6 +96,11 @@ public class MainWindow implements ActionListener {
             frame.getContentPane().removeAll();
             frame.getContentPane().repaint();
             ListCustomers listCustomers = new ListCustomers(frame,shop);
+        }
+        else if(s.equals("Ready For Pickup")){
+            frame.getContentPane().removeAll();
+            frame.getContentPane().repaint();
+            ReadyForPickup listCustomers = new ReadyForPickup(frame,shop);
         }
 
     }

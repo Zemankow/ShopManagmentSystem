@@ -169,7 +169,7 @@ public class ModifyCustomer  implements ActionListener {
             }
             else if(s.equals("Add Maintenance")){
                 frame.getContentPane().removeAll();
-                MainWindow main = new MainWindow(frame,shop);
+                AddMaintenance maintenance = new AddMaintenance(frame,shop,customer,carSelected);
             }
         }
     }

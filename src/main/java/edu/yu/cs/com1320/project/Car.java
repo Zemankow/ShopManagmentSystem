@@ -31,9 +31,8 @@ public class Car implements Comparable<Car>{
 
 
     //Setters
-    public void addMaintenanceJob(MaintenanceJob.MaintenanceType type, String complaint){
-        MaintenanceJob mj = new MaintenanceJob(this.odometer,type,complaint);
-        current.add(mj);
+    public void addMaintenanceJob(MaintenanceJob maintenanceJob){
+        current.add(maintenanceJob);
     }
     public void setCarNeeded(LocalDate newDate){
         this.carNeeded = newDate;

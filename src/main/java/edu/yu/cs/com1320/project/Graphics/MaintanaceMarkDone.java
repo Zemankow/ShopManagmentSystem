@@ -26,6 +26,8 @@ public class MaintanaceMarkDone implements ActionListener {
     public MaintanaceMarkDone(JFrame tmpFrame, Shop shop, Car car){
         frame = tmpFrame;
         frame.setLayout(new FlowLayout());
+        frame.getContentPane().repaint();
+
         this.shop = shop;
         this.car = car;
         paintGUI();

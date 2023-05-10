@@ -14,7 +14,7 @@ public class MaintenanceJob {
 
     private double odometer;
     private String originalComplaint,mechanicNotes, preamble;
-    private static LocalDateTime clock;
+    private static LocalDateTime clock = LocalDateTime.now();
     private double price;
     private boolean paid;
 

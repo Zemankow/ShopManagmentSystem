@@ -9,13 +9,18 @@ import javax.swing.*;
 import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.text.NumberFormat;
 
+
 public class AddMaintenance implements ActionListener {
     JFrame frame;
     Car car;
+
+    Customer customer;
+    Shop shop;
 
     JButton add;
     JButton back;
@@ -24,12 +29,13 @@ public class AddMaintenance implements ActionListener {
 
 
     MaintenanceJob.MaintenanceType type;
-    public AddMaintenance(JFrame tmpFrame, Car car) {
+    public AddMaintenance(JFrame tmpFrame, Shop shop, Customer customer, Car car) {
 
         frame = tmpFrame;
 
         frame.setLayout(new FlowLayout());
-
+        this.customer = customer;
+        this.shop = shop;
         this.car = car;
 
         paintGUI();
@@ -95,7 +101,8 @@ public class AddMaintenance implements ActionListener {
 
         if(object instanceof JComboBox){
             JComboBox<MaintenanceJob.MaintenanceType> combo = (JComboBox<MaintenanceJob.MaintenanceType>)object;
-            type = combo.getSelectedItem();
+            Object objectItem = combo.getSelectedItem();
+            type = (MaintenanceJob.MaintenanceType)objectItem;
         }
         else if (s.equals("Add")) {
             // set the text of the label to the text of the field
@@ -107,12 +114,17 @@ public class AddMaintenance implements ActionListener {
             if(type!=null) {
                 MaintenanceJob maintenanceJob = new MaintenanceJob(odometerInt, type, complaint.getText());
                 car.addMaintenanceJob(maintenanceJob);
+                frame.getContentPane().removeAll();
+                frame.getContentPane().repaint();
+                paintGUI();
             }
 
         }
-        else if(s.equals("Main Menu")){
+        else if(s.equals("Back")){
             frame.getContentPane().removeAll();
-            MainWindow main = new MainWindow(frame,shop);
+
+            shop.addCar(car);
+            ModifyCustomer modifyCustomer = new ModifyCustomer(frame,shop,customer);
         }
 
     }

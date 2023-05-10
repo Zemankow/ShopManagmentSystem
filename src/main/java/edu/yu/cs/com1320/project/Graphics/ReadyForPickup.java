@@ -1,42 +1,53 @@
 package edu.yu.cs.com1320.project.Graphics;
 
 import edu.yu.cs.com1320.project.Car;
+import edu.yu.cs.com1320.project.Customer;
 import edu.yu.cs.com1320.project.Shop;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.List;
 
-public class SelectCarMaintanance implements ActionListener {
+public class ReadyForPickup implements ActionListener {
     JFrame frame;
 
-    // JFrame
 
     // JButton
-    static JButton mainMenu;
+    JButton mainMenu;
+    JButton pickedUp;
+
+
     Shop shop;
+
+    Car carSelected;
+
+    static Hashtable<String, Customer> customerHashtable = new Hashtable<>();
 
     Hashtable<String,Car> CarHashtable = new Hashtable<>();
 
-    // label to display text
+    Customer customerSelected;
+    public ReadyForPickup(JFrame tmpFrame, Shop shop) {
 
-    // default constructor
-    public SelectCarMaintanance(JFrame tmpFrame,Shop shop)
-    {
         frame = tmpFrame;
         frame.setLayout(new FlowLayout());
         this.shop = shop;
-        for(Car car: shop.getBay()){
+
+        paintGUI();
+    }
+    private void paintGUI(){
+
+        for(Car car: shop.getReadyForPickup()){
             CarHashtable.put(car.toString(),car);
         }
         JComboBox carsBay = new JComboBox(CarHashtable.keySet().toArray());
         carsBay.addActionListener(this);
         mainMenu = new JButton("Main Menu");
         mainMenu.addActionListener(this);
+
+        pickedUp = new JButton("Pick Up");
+        pickedUp.addActionListener(this);
 
         //Set up the picture.
         frame.getContentPane().setFont(frame.getContentPane().getFont().deriveFont(Font.ITALIC));
@@ -47,23 +58,19 @@ public class SelectCarMaintanance implements ActionListener {
 
         //Lay out the demo.
         frame.getContentPane().add(mainMenu);
+        frame.getContentPane().add(pickedUp);
 
         frame.getContentPane().add(carsBay, BorderLayout.PAGE_START);
         frame.getContentPane().repaint();
     }
-
-
-    public void actionPerformed(ActionEvent e)
-    {
+    @Override
+    public void actionPerformed(ActionEvent e) {
         Object object = e.getSource();
 
         if(object instanceof JComboBox){
-            JComboBox cb = (JComboBox)e.getSource();
-            String carName = (String)cb.getSelectedItem();
-            Car carToUpdate = CarHashtable.get(carName);
-            frame.getContentPane().removeAll();
-            frame.getContentPane().repaint();
-            MaintanaceMarkDone maintanaceMarkDone = new MaintanaceMarkDone(frame,shop,carToUpdate);
+            JComboBox combo = (JComboBox)object;
+            String customer = (String)combo.getSelectedItem();
+            carSelected = CarHashtable.get(customer);
         }
         if(object instanceof JButton) {
             JButton button = (JButton)object;
@@ -73,10 +80,14 @@ public class SelectCarMaintanance implements ActionListener {
                 frame.getContentPane().removeAll();
                 MainWindow main = new MainWindow(frame,shop);
             }
+            else if(s.equals("Pick Up")){
+                frame.getContentPane().removeAll();
+                shop.removeReadyForPickup(carSelected);
+                CarHashtable.remove(carSelected.toString());
+                frame.getContentPane().removeAll();
+                paintGUI();
+
+            }
         }
-
-
-
-
     }
 }
