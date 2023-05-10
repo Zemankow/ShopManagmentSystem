@@ -29,21 +29,25 @@ public class MainWindow implements ActionListener {
     public MainWindow(JFrame tmpFrame,Shop shop)
     {
         frame = tmpFrame;
+        frame.setLayout(new GridLayout());
+
+
         addCustomerButton = new JButton("Add Customer");
         markMaintananceDone = new JButton("Mark Maintanance Done");
 
         this.shop = shop;
 
         // addActionListener to button
-        addCustomerButton.setBounds(200,0,100,30);
+        addCustomerButton.setBounds(200,0,200,30);
         addCustomerButton.addActionListener(this);
 
-        markMaintananceDone.setBounds(0,0,100,30);
+        markMaintananceDone.setBounds(0,0,200,30);
         markMaintananceDone.addActionListener(this);
 
         // create a panel to add buttons and textfield
         frame.getContentPane().add(addCustomerButton);
         frame.getContentPane().add(markMaintananceDone);
+
 
         frame.getContentPane().repaint();
         Car car = new Car("1","Toyota", "2019", LocalDate.now(),10000);

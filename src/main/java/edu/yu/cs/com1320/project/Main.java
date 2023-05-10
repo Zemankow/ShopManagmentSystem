@@ -14,7 +14,9 @@ public class Main {
     static JFrame frame;
 
     public static void main(String[] args) {
+    {
         OpeningWindow();
+    }
 
     }
     private static void OpeningWindow(){
@@ -22,7 +24,6 @@ public class Main {
         //Display the window.
         frame.setVisible(true);
         frame.setSize(1000,1000);
-        frame.getContentPane().removeAll();
 
         MainWindow mainWindow = new MainWindow(frame,shop);
 

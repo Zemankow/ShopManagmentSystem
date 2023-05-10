@@ -31,9 +31,12 @@ public class SelectCarMaintanance implements ActionListener {
     public SelectCarMaintanance(JFrame tmpFrame,Shop shop)
     {
         frame = tmpFrame;
+        frame.setLayout(new FlowLayout());
+
         for(Car car: shop.getBay()){
             CarHashtable.put(car.toString(),car);
         }
+        System.out.println(CarHashtable.size());
         JComboBox carsBay = new JComboBox(CarHashtable.keySet().toArray());
         carsBay.addActionListener(this);
 
@@ -45,7 +48,9 @@ public class SelectCarMaintanance implements ActionListener {
         //A real program would compute this.
 
         //Lay out the demo.
+
         frame.getContentPane().add(carsBay, BorderLayout.PAGE_START);
+        frame.getContentPane().repaint();
     }
 
 

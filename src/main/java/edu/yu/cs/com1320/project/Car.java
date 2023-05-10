@@ -122,4 +122,9 @@ public class Car implements Comparable<Car>{
         }
         return false;
     }
+
+    @Override
+    public int hashCode(){
+        return this.toString().hashCode();
+    }
 }
