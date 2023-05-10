@@ -22,7 +22,7 @@ public class ListCustomers implements ActionListener {
     static JButton b;
     Shop shop;
 
-    Hashtable<String, Customer> customerHashtable = new Hashtable<>();
+    static Hashtable<String, Customer> customerHashtable = new Hashtable<>();
 
 
     Customer customerSelected;

@@ -17,7 +17,7 @@ public class MaintanaceMarkDone implements ActionListener {
     JButton markFinished;
     JButton mainMenu;
 
-    Hashtable<String,MaintenanceJob> MaintanaceHashTable = new Hashtable<>();
+    static Hashtable<String,MaintenanceJob> MaintanaceHashTable = new Hashtable<>();
 
     Car car;
     Shop shop;

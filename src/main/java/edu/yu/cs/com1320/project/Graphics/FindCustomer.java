@@ -29,7 +29,7 @@ public class FindCustomer implements ActionListener {
     static JButton b;
     Shop shop;
 
-    Hashtable<String, Car> CarHashtable = new Hashtable<>();
+    static Hashtable<String, Car> CarHashtable = new Hashtable<>();
 
     // label to display text
 
