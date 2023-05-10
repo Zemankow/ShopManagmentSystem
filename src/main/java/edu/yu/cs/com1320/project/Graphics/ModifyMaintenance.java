@@ -10,11 +10,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Hashtable;
 
-public class MaintanaceMarkDone implements ActionListener {
+public class ModifyMaintenance implements ActionListener {
 
 
     JFrame frame;
     JButton markFinished;
+    JButton modify;
+
     JButton mainMenu;
 
     static Hashtable<String,MaintenanceJob> MaintanaceHashTable = new Hashtable<>();
@@ -23,7 +25,7 @@ public class MaintanaceMarkDone implements ActionListener {
     Shop shop;
     MaintenanceJob jobSelected;
 
-    public MaintanaceMarkDone(JFrame tmpFrame, Shop shop, Car car){
+    public ModifyMaintenance(JFrame tmpFrame, Shop shop, Car car){
         frame = tmpFrame;
         frame.setLayout(new FlowLayout());
         frame.getContentPane().repaint();
@@ -36,6 +38,8 @@ public class MaintanaceMarkDone implements ActionListener {
     }
     private void paintGUI(){
         MaintanaceHashTable.clear();
+        modify = new JButton("Modify");
+
         markFinished = new JButton("Completed");
         mainMenu = new JButton("Main Menu");
 
@@ -46,7 +50,7 @@ public class MaintanaceMarkDone implements ActionListener {
         maintanceCurrent.addActionListener(this);
         markFinished.addActionListener(this);
         mainMenu.addActionListener(this);
-
+        modify.addActionListener(this);
 
         //Set up the picture.
         frame.getContentPane().setFont(frame.getContentPane().getFont().deriveFont(Font.ITALIC));
@@ -59,6 +63,8 @@ public class MaintanaceMarkDone implements ActionListener {
 
         frame.getContentPane().add(maintanceCurrent, BorderLayout.PAGE_START);
         frame.getContentPane().add(markFinished);
+        frame.getContentPane().add(modify);
+
         frame.getContentPane().add(mainMenu);
 
         frame.getContentPane().repaint();
@@ -89,6 +95,12 @@ public class MaintanaceMarkDone implements ActionListener {
                 paintGUI();
 
 
+            }
+            else if(s.equals("Modify")){
+                frame.getContentPane().removeAll();
+                if(jobSelected!=null) {
+                    AddMechincNote addMechincNote =  new AddMechincNote(frame,shop,jobSelected);
+                }
             }
             else if(s.equals("Main Menu")){
                 frame.getContentPane().removeAll();

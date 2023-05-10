@@ -13,12 +13,18 @@ public class Shop {
     private List<Customer> customers;
 
 
+
+    private List<Mechanic> mechanics;
+
+
+
     public Shop(int baySize){
         this.baySize = baySize;
         this.requiresWork = new PriorityQueue<>();
         this.bay = new ArrayList<>();
         this.readyForPickup = new ArrayList<>();
         this.customers =  new ArrayList<>();
+        this.mechanics = new ArrayList<>();
     }
     /**
      * this method should not be here but Eitan belives it should
@@ -61,6 +67,9 @@ public class Shop {
             bay.add(requiresWork.remove());
         }
     }
+    public List<Mechanic> getMechanics() {
+        return mechanics;
+    }
     public List<Car> getReadyForPickup(){
         return List.copyOf(readyForPickup);
     }
@@ -76,6 +85,10 @@ public class Shop {
     }
     public void addCustomer(Customer customer){
         this.customers.add(customer);
+    }
+
+    public void addMechanic(Mechanic mechanic){
+        this.mechanics.add(mechanic);
     }
     public void removeCustomer(Customer customer){
         if(customer!=null){

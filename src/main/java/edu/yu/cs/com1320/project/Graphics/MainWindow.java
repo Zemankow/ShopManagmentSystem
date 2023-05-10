@@ -18,9 +18,13 @@ public class MainWindow implements ActionListener {
 
     // JButton
     JButton addCustomerButton;
+    JButton addMechanicButton;
+
     JButton markMaintananceDone;
     JButton findCustomer;
     JButton listCustomer;
+    JButton listMechanics;
+
     JButton readyForPickup;
 
 
@@ -36,9 +40,13 @@ public class MainWindow implements ActionListener {
 
 
         addCustomerButton = new JButton("Add Customer");
-        markMaintananceDone = new JButton("Mark Maintanance Done");
+        addMechanicButton = new JButton("Add Mechanic");
+
+        markMaintananceDone = new JButton("Modify Maintenance");
         findCustomer = new JButton("Find Customer");
         listCustomer = new JButton("List Customer");
+        listMechanics = new JButton("List Mechanics");
+
         readyForPickup = new JButton("Ready For Pickup");
 
         this.shop = tmpShop;
@@ -46,6 +54,8 @@ public class MainWindow implements ActionListener {
         // addActionListener to button
         addCustomerButton.setBounds(200,0,200,30);
         addCustomerButton.addActionListener(this);
+        addMechanicButton.setBounds(1000,0,200,30);
+        addMechanicButton.addActionListener(this);
 
         markMaintananceDone.setBounds(0,0,200,30);
         markMaintananceDone.addActionListener(this);
@@ -53,14 +63,19 @@ public class MainWindow implements ActionListener {
         findCustomer.addActionListener(this);
         listCustomer.setBounds(600,0,200,30);
         listCustomer.addActionListener(this);
+        listMechanics.setBounds(1200,0,200,30);
+        listMechanics.addActionListener(this);
 
         readyForPickup.setBounds(800,0,200,30);
         readyForPickup.addActionListener(this);
         // create a panel to add buttons and textfield
+        frame.getContentPane().add(addMechanicButton);
         frame.getContentPane().add(addCustomerButton);
         frame.getContentPane().add(markMaintananceDone);
         frame.getContentPane().add(findCustomer);
         frame.getContentPane().add(listCustomer);
+        frame.getContentPane().add(listMechanics);
+
         frame.getContentPane().add(readyForPickup);
 
 
@@ -80,7 +95,14 @@ public class MainWindow implements ActionListener {
             AddCustomer addCustomer = new AddCustomer(frame,shop);
 
         }
-        else if(s.equals("Mark Maintanance Done")){
+        else if (s.equals("Add Mechanic")) {
+
+            frame.getContentPane().removeAll();
+            frame.getContentPane().repaint();
+            AddMechanic addMechanic = new AddMechanic(frame,shop);
+
+        }
+        else if(s.equals("Modify Maintenance")){
             frame.getContentPane().removeAll();
             frame.getContentPane().repaint();
             SelectCarMaintanance selectCarMaintanance = new SelectCarMaintanance(frame,shop);
@@ -94,6 +116,11 @@ public class MainWindow implements ActionListener {
             frame.getContentPane().removeAll();
             frame.getContentPane().repaint();
             ListCustomers listCustomers = new ListCustomers(frame,shop);
+        }
+        else if(s.equals("List Mechanics")){
+            frame.getContentPane().removeAll();
+            frame.getContentPane().repaint();
+            ListMechanics listCustomers = new ListMechanics(frame,shop);
         }
         else if(s.equals("Ready For Pickup")){
             frame.getContentPane().removeAll();

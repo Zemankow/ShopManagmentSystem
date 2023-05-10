@@ -7,9 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.List;
 
 public class SelectCarMaintanance implements ActionListener {
     JFrame frame;
@@ -63,7 +61,7 @@ public class SelectCarMaintanance implements ActionListener {
             Car carToUpdate = CarHashtable.get(carName);
             frame.getContentPane().removeAll();
             frame.getContentPane().repaint();
-            MaintanaceMarkDone maintanaceMarkDone = new MaintanaceMarkDone(frame,shop,carToUpdate);
+            ModifyMaintenance modifyMaintenance = new ModifyMaintenance(frame,shop,carToUpdate);
         }
         if(object instanceof JButton) {
             JButton button = (JButton)object;

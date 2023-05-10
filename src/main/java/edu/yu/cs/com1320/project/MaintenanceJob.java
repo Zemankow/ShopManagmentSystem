@@ -23,6 +23,7 @@ public class MaintenanceJob {
         this.maintenanceType=type;
         this.preamble = "Creating Work Order at "+clock.toString()+" \n";
         this.originalComplaint = complaint;
+        this.mechanics = new LinkedList<>();
         maintenanceStage=MaintenanceStage.ReadyForInspection;
     }
 
@@ -61,7 +62,12 @@ public class MaintenanceJob {
     //Setters
     public void addMechanic(Mechanic mechanic){
         if(mechanic!=null){
-            this.mechanics.add(mechanic);
+            if(this.mechanics!=null) {
+                if (!this.mechanics.contains(mechanic)) {
+                    this.mechanics.add(mechanic);
+                }
+            }
+
         }
 
     }

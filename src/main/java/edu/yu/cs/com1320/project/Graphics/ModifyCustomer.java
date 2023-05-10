@@ -24,6 +24,7 @@ public class ModifyCustomer  implements ActionListener {
     JButton mainMenu;
 
     JButton addMaintenance;
+    JButton addCar;
 
     Customer customer;
 
@@ -53,6 +54,9 @@ public class ModifyCustomer  implements ActionListener {
 
         addMaintenance.addActionListener(this);
 
+        addCar = new JButton("Add Car");
+
+        addCar.addActionListener(this);
         modify.addActionListener(this);
 
         for(Car car: customer.getCars()){
@@ -129,6 +133,8 @@ public class ModifyCustomer  implements ActionListener {
         frame.getContentPane().add(mainMenu);
         frame.getContentPane().add(modify);
         frame.getContentPane().add(addMaintenance);
+        frame.getContentPane().add(addCar);
+
         frame.getContentPane().repaint();
     }
     @Override
@@ -162,6 +168,10 @@ public class ModifyCustomer  implements ActionListener {
                 frame.getContentPane().removeAll();
                 paintGUI();
 
+            }
+            else if(s.equals("Add Car")){
+                frame.getContentPane().removeAll();
+                AddCar addCar = new AddCar(frame,shop,customer);
             }
             else if(s.equals("Main Menu")){
                 frame.getContentPane().removeAll();
