@@ -2,6 +2,7 @@ package edu.yu.cs.com1320.project.Graphics;
 
 import edu.yu.cs.com1320.project.Car;
 import edu.yu.cs.com1320.project.Customer;
+import edu.yu.cs.com1320.project.MaintenanceJob;
 import edu.yu.cs.com1320.project.Shop;
 
 import javax.swing.*;
@@ -51,6 +52,7 @@ public class MainWindow implements ActionListener {
 
         frame.getContentPane().repaint();
         Car car = new Car("1","Toyota", "2019", LocalDate.now(),10000);
+        car.addCurrentMaintenance(new MaintenanceJob(200000, MaintenanceJob.MaintenanceType.AC,"Ac is not working properly"));
         shop.addCar(car);
         shop.moveCarToBay();
 
