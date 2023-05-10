@@ -36,7 +36,11 @@ public class Shop {
      * @param type the type of maintenance
      * @param complaint the inital complaint
      * */
-
+    public void makeNewWorkOrder(Car car, MaintenanceJob.MaintenanceType type, String complaint){
+        Car c = getCarFromStorage(car);
+        c.addMaintenanceJob(type,complaint);
+        requiresWork.add(c);
+    }
     /**
      * Gets car from storage if belongs to a customer
      * @param car the car to search for
