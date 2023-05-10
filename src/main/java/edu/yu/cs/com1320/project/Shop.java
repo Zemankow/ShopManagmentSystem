@@ -18,6 +18,9 @@ public class Shop {
         this.readyForPickup = new ArrayList<>();
         this.customers =  new ArrayList<>();
     }
+    /**
+     * this method should not be here but Eitan belives it should
+     * You should use #makeNewWorkOrder()*/
     public void addCar(Car car){
         this.requiresWork.add(car);
     }

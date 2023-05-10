@@ -105,7 +105,7 @@ public class AddMaintenance implements ActionListener {
                 odometerInt= Integer.parseInt(odometer.getText());
             }
             if(type!=null) {
-                MaintenanceJob maintenanceJob = new MaintenanceJob(odometerInt, type, );
+                MaintenanceJob maintenanceJob = new MaintenanceJob(odometerInt, type, complaint.getText());
                 car.addMaintenanceJob(maintenanceJob);
             }
 
