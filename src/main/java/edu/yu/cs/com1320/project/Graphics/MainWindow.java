@@ -1,8 +1,6 @@
 package edu.yu.cs.com1320.project.Graphics;
 
-import edu.yu.cs.com1320.project.Car;
-import edu.yu.cs.com1320.project.Customer;
-import edu.yu.cs.com1320.project.MaintenanceJob;
+
 import edu.yu.cs.com1320.project.Shop;
 
 import javax.swing.*;
@@ -34,7 +32,7 @@ public class MainWindow implements ActionListener {
     public MainWindow(JFrame tmpFrame,Shop tmpShop)
     {
         frame = tmpFrame;
-        frame.setLayout(new GridLayout());
+        frame.setLayout(new FlowLayout());
 
 
         addCustomerButton = new JButton("Add Customer");

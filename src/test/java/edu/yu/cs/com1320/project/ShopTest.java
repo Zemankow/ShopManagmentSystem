@@ -11,7 +11,7 @@ public class ShopTest {
 
     @Test
     public void testAddMaint(){
-        shop = new Shop();
+        shop = new Shop(4);
 
         shop.addCustomer(makeCustomer());
         int index = shop.getCustomers().indexOf(makeCustomer());

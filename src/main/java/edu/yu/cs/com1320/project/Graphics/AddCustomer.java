@@ -8,7 +8,6 @@ import edu.yu.cs.com1320.project.Shop;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.text.Format;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import javax.swing.*;
@@ -28,8 +27,12 @@ public class AddCustomer implements ActionListener {
     // JFrame
 
     // JButton
-    static JButton b;
+    static JButton submit;
+
+    static JButton mainMenu;
+
     Shop shop;
+
 
     // label to display text
 
@@ -37,14 +40,17 @@ public class AddCustomer implements ActionListener {
     public AddCustomer(JFrame tmpFrame,Shop shop)
     {
         frame = tmpFrame;
-        b = new JButton("submit");
+        submit = new JButton("submit");
         frame.setLayout(new FlowLayout());
 
         this.shop = shop;
+        mainMenu = new JButton("Main Menu");
 
+        mainMenu.addActionListener(this);
+        mainMenu.setBounds(500,0,200,30);
         // addActionListener to button
-        b.addActionListener(this);
-        b.setBounds(300,0,200,30);
+        submit.addActionListener(this);
+        submit.setBounds(300,0,200,30);
 
         name = new JTextField(16);
         name.setBounds(100,0,200,30);
@@ -138,8 +144,8 @@ public class AddCustomer implements ActionListener {
         carOdometer.setBounds(0,220,100,30);
         frame.getContentPane().add(carOdometer);
         frame.getContentPane().add(odometer);
-
-        frame.getContentPane().add(b);
+        frame.getContentPane().add(mainMenu);
+        frame.getContentPane().add(submit);
         frame.getContentPane().repaint();
     }
 
@@ -168,6 +174,10 @@ public class AddCustomer implements ActionListener {
             MainWindow mainWindow = new MainWindow(frame,shop);
 
 
+        }
+        else if(s.equals("Main Menu")){
+            frame.getContentPane().removeAll();
+            MainWindow main = new MainWindow(frame,shop);
         }
     }
 }
