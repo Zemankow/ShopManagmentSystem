@@ -30,8 +30,9 @@ public class Shop {
      * this method should not be here but Eitan belives it should
      * You should use #makeNewWorkOrder()*/
     public void addCar(Car car){
-        this.requiresWork.add(car);
-
+        if(car!=null) {
+            this.requiresWork.add(car);
+        }
         if(bay.size()<baySize){
             moveCarToBay();
         }

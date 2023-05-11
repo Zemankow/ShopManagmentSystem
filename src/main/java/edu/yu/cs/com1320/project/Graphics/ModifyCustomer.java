@@ -17,16 +17,16 @@ import java.util.Hashtable;
 
 public class ModifyCustomer  implements ActionListener {
 
-    JFrame frame;
-    JButton remove;
-    JButton modify;
+    static JFrame frame;
+    static JButton remove;
+    static JButton modify;
 
-    JButton mainMenu;
+    static JButton mainMenu;
 
-    JButton addMaintenance;
-    JButton addCar;
+    static JButton addMaintenance;
+    static JButton addCar;
 
-    Customer customer;
+    static Customer customer;
 
     static JTextField name;
     static JTextField address;
@@ -36,7 +36,7 @@ public class ModifyCustomer  implements ActionListener {
     Car carSelected;
 
 
-    Hashtable<String, Car> carHashtable = new Hashtable<>();
+    static Hashtable<String, Car> carHashtable = new Hashtable<>();
 
     public ModifyCustomer(JFrame tmpFrame, Shop shop, Customer customer) {
         this.shop = shop;
@@ -171,14 +171,19 @@ public class ModifyCustomer  implements ActionListener {
             }
             else if(s.equals("Add Car")){
                 frame.getContentPane().removeAll();
+                carHashtable.clear();
                 AddCar addCar = new AddCar(frame,shop,customer);
             }
             else if(s.equals("Main Menu")){
                 frame.getContentPane().removeAll();
+                carHashtable.clear();
+
                 MainWindow main = new MainWindow(frame,shop);
             }
             else if(s.equals("Add Maintenance")){
                 frame.getContentPane().removeAll();
+                carHashtable.clear();
+
                 AddMaintenance maintenance = new AddMaintenance(frame,shop,customer,carSelected);
             }
         }

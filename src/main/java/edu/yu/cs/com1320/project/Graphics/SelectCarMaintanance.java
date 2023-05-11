@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.util.Hashtable;
 
 public class SelectCarMaintanance implements ActionListener {
-    JFrame frame;
+    static JFrame frame;
 
     // JFrame
 
@@ -18,7 +18,7 @@ public class SelectCarMaintanance implements ActionListener {
     static JButton mainMenu;
     Shop shop;
 
-    Hashtable<String,Car> CarHashtable = new Hashtable<>();
+    static Hashtable<String,Car> CarHashtable = new Hashtable<>();
 
     // label to display text
 
@@ -61,6 +61,7 @@ public class SelectCarMaintanance implements ActionListener {
             Car carToUpdate = CarHashtable.get(carName);
             frame.getContentPane().removeAll();
             frame.getContentPane().repaint();
+            CarHashtable.clear();
             ModifyMaintenance modifyMaintenance = new ModifyMaintenance(frame,shop,carToUpdate);
         }
         if(object instanceof JButton) {
@@ -69,6 +70,7 @@ public class SelectCarMaintanance implements ActionListener {
 
             if(s.equals("Main Menu")){
                 frame.getContentPane().removeAll();
+                CarHashtable.clear();
                 MainWindow main = new MainWindow(frame,shop);
             }
         }

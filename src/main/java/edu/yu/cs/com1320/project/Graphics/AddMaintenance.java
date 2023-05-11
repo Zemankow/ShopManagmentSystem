@@ -16,16 +16,16 @@ import java.text.NumberFormat;
 
 
 public class AddMaintenance implements ActionListener {
-    JFrame frame;
+    static JFrame frame;
     Car car;
 
     Customer customer;
     Shop shop;
 
-    JButton add;
-    JButton back;
-    JTextField odometer;
-    JTextField complaint;
+    static JButton add;
+    static JButton back;
+    static JTextField odometer;
+    static JTextField complaint;
 
 
     MaintenanceJob.MaintenanceType type;

@@ -13,7 +13,7 @@ import java.util.Hashtable;
 
 public class AddMechincNote implements ActionListener {
 
-    JFrame frame;
+    static JFrame frame;
 
 
     // JButton
@@ -22,7 +22,7 @@ public class AddMechincNote implements ActionListener {
     static JTextField note;
 
     static JButton add;
-    static Shop shop;
+    Shop shop;
 
     static Hashtable<String, Mechanic> mechanicHashtable = new Hashtable<>();
 

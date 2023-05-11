@@ -11,23 +11,22 @@ import java.awt.event.ActionListener;
 import java.util.Hashtable;
 
 public class ReadyForPickup implements ActionListener {
-    JFrame frame;
+    static JFrame frame;
 
 
     // JButton
-    JButton mainMenu;
-    JButton pickedUp;
+    static JButton mainMenu;
+    static JButton pickedUp;
 
 
     Shop shop;
 
     Car carSelected;
 
-    static Hashtable<String, Customer> customerHashtable = new Hashtable<>();
 
-    Hashtable<String,Car> CarHashtable = new Hashtable<>();
+    static Hashtable<String,Car> CarHashtable = new Hashtable<>();
 
-    Customer customerSelected;
+    static Customer customerSelected;
     public ReadyForPickup(JFrame tmpFrame, Shop shop) {
 
         frame = tmpFrame;
@@ -78,6 +77,7 @@ public class ReadyForPickup implements ActionListener {
 
             if(s.equals("Main Menu")){
                 frame.getContentPane().removeAll();
+                CarHashtable.clear();
                 MainWindow main = new MainWindow(frame,shop);
             }
             else if(s.equals("Pick Up")){

@@ -12,11 +12,11 @@ import java.util.Hashtable;
 
 public class ListMechanics implements ActionListener {
 
-    JFrame frame;
+    static JFrame frame;
 
 
     // JButton
-    JButton mainMenu;
+    static JButton mainMenu;
 
     static JButton b;
     Shop shop;
@@ -24,7 +24,7 @@ public class ListMechanics implements ActionListener {
     static Hashtable<String, Mechanic> mechanicHashtable = new Hashtable<>();
 
 
-    Customer customerSelected;
+    static Customer customerSelected;
     public ListMechanics(JFrame tmpFrame, Shop shop) {
 
         frame = tmpFrame;

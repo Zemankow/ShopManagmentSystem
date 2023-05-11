@@ -13,17 +13,17 @@ import java.util.Hashtable;
 public class ModifyMaintenance implements ActionListener {
 
 
-    JFrame frame;
-    JButton markFinished;
-    JButton modify;
+    static JFrame frame;
+    static JButton markFinished;
+    static JButton modify;
 
-    JButton mainMenu;
+    static JButton mainMenu;
 
     static Hashtable<String,MaintenanceJob> MaintanaceHashTable = new Hashtable<>();
 
     Car car;
     Shop shop;
-    MaintenanceJob jobSelected;
+    static MaintenanceJob jobSelected;
 
     public ModifyMaintenance(JFrame tmpFrame, Shop shop, Car car){
         frame = tmpFrame;
@@ -99,11 +99,14 @@ public class ModifyMaintenance implements ActionListener {
             else if(s.equals("Modify")){
                 frame.getContentPane().removeAll();
                 if(jobSelected!=null) {
+                    MaintanaceHashTable.clear();
+
                     AddMechincNote addMechincNote =  new AddMechincNote(frame,shop,jobSelected);
                 }
             }
             else if(s.equals("Main Menu")){
                 frame.getContentPane().removeAll();
+                MaintanaceHashTable.clear();
                 MainWindow main = new MainWindow(frame,shop);
             }
         }

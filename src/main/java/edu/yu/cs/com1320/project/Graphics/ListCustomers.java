@@ -13,11 +13,11 @@ import java.util.Hashtable;
 
 public class ListCustomers implements ActionListener {
 
-    JFrame frame;
+    static JFrame frame;
 
 
     // JButton
-    JButton mainMenu;
+    static JButton mainMenu;
 
     static JButton b;
     Shop shop;

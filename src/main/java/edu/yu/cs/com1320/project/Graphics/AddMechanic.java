@@ -16,7 +16,7 @@ import java.text.NumberFormat;
 import java.time.LocalDate;
 
 public class AddMechanic implements ActionListener {
-    JFrame frame;
+    static JFrame frame;
     static JTextField name;
     static JTextField address;
     static JTextField phoneNumber;

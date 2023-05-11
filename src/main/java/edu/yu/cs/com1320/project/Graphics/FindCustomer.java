@@ -16,7 +16,7 @@ import java.time.LocalDate;
 import java.util.Hashtable;
 
 public class FindCustomer implements ActionListener {
-    JFrame frame;
+    static JFrame frame;
     static JTextField name;
     static JTextField address;
     static JTextField phoneNumber;
@@ -24,12 +24,11 @@ public class FindCustomer implements ActionListener {
     // JFrame
 
     // JButton
-    JButton mainMenu;
+    static JButton mainMenu;
 
     static JButton b;
     Shop shop;
 
-    static Hashtable<String, Car> CarHashtable = new Hashtable<>();
 
     // label to display text
 

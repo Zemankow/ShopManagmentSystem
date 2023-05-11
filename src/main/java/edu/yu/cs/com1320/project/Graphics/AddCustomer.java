@@ -15,15 +15,15 @@ import javax.swing.text.NumberFormatter;
 
 public class AddCustomer implements ActionListener {
     // JTextField
-    JFrame frame;
+    static JFrame frame;
     static JTextField name;
     static JTextField address;
     static JTextField phoneNumber;
 
-    JTextField vin;
-    JTextField model;
-    JTextField make;
-    JTextField odometer;
+    static JTextField vin;
+    static JTextField model;
+    static JTextField make;
+    static JTextField odometer;
     // JFrame
 
     // JButton

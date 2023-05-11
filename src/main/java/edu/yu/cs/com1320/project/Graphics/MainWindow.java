@@ -12,20 +12,20 @@ import java.time.LocalDate;
 public class MainWindow implements ActionListener {
     // JTextField
 
-    JFrame frame;
+    static JFrame frame;
 
     // JFrame
 
     // JButton
-    JButton addCustomerButton;
-    JButton addMechanicButton;
+    static JButton addCustomerButton;
+    static JButton addMechanicButton;
 
-    JButton markMaintananceDone;
-    JButton findCustomer;
-    JButton listCustomer;
-    JButton listMechanics;
+    static JButton markMaintananceDone;
+    static JButton findCustomer;
+    static JButton listCustomer;
+    static JButton listMechanics;
 
-    JButton readyForPickup;
+    static JButton readyForPickup;
 
 
     Shop shop;
