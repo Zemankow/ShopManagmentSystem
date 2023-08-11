@@ -20,7 +20,7 @@ public class Shop {
 
     public Shop(int baySize){
         this.baySize = baySize;
-        this.requiresWork = new PriorityQueue<>();
+        this.requiresWork = new PriorityQueue<>(new workComparator());
         this.bay = new ArrayList<>();
         this.readyForPickup = new ArrayList<>();
         this.customers =  new ArrayList<>();
@@ -98,6 +98,17 @@ public class Shop {
     }
     public void removeReadyForPickup(Car car){
         this.readyForPickup.remove(car);
+    }
+
+
+    static class workComparator implements Comparator<Car>{
+
+        // Overriding compare()method of Comparator
+        // for descending order of cgpa
+        public int compare(Car car1, Car car2) {
+           return car1.compareTo(car2);
+        }
+
     }
 
 }

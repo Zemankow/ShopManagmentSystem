@@ -119,7 +119,11 @@ public class Car implements Comparable<Car>{
 
     @Override
     public int compareTo(Car other) {
-        return this.carNeeded.compareTo(other.getCarNeeded());
+        if (this.carNeeded.isAfter(other.getCarNeeded()))
+            return 1;
+        else if (this.carNeeded.isBefore(other.getCarNeeded()))
+            return -1;
+        return 0;
     }
 
     @Override

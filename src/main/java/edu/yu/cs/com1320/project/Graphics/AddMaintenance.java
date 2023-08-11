@@ -12,7 +12,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 
 public class AddMaintenance implements ActionListener {
@@ -26,6 +32,9 @@ public class AddMaintenance implements ActionListener {
     static JButton back;
     static JTextField odometer;
     static JTextField complaint;
+
+    static JFormattedTextField dateField;
+    DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
 
     MaintenanceJob.MaintenanceType type;
@@ -81,6 +90,9 @@ public class AddMaintenance implements ActionListener {
             }
         });
 
+        dateField = new JFormattedTextField(dateFormat);
+        dateField.setPreferredSize(new Dimension(100, 26));
+
         JLabel carOdometer = new JLabel("Odometer:");
         carOdometer.setBounds(0,00,100,30);
         frame.getContentPane().add(carOdometer);
@@ -96,7 +108,7 @@ public class AddMaintenance implements ActionListener {
         frame.getContentPane().add(add);
         frame.getContentPane().add(back);
         frame.getContentPane().add(complaint);
-
+        frame.getContentPane().add(dateField);
         frame.getContentPane().repaint();
     }
 
@@ -120,6 +132,14 @@ public class AddMaintenance implements ActionListener {
             if(type!=null) {
                 MaintenanceJob maintenanceJob = new MaintenanceJob(odometerInt, type, complaint.getText());
                 car.addMaintenanceJob(maintenanceJob);
+                String dateText = dateFormat.format(dateField.getValue());
+                try {
+                    Date date = dateFormat.parse(dateText);
+                    car.setCarNeeded(date.toInstant().atZone(ZoneId.of("UTC")).toLocalDate());
+
+                } catch (ParseException ex) {
+                    throw new RuntimeException(ex);
+                }
                 frame.getContentPane().removeAll();
                 frame.getContentPane().repaint();
                 paintGUI();
