@@ -11,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) {
     {
-        shop =  new Shop(0);
+        shop =  new Shop(5);
         OpeningWindow();
     }
 
