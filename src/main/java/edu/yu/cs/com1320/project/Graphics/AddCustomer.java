@@ -19,6 +19,7 @@ public class AddCustomer implements ActionListener {
     static JTextField name;
     static JTextField address;
     static JTextField phoneNumber;
+    static JTextField year;
 
     static JTextField vin;
     static JTextField model;
@@ -101,6 +102,22 @@ public class AddCustomer implements ActionListener {
             }
         });
 
+
+        year = new JFormattedTextField(formatter);
+        year.setBounds(100,250,200,30);
+        year.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent ke) {
+                String value = year.getText();
+                int l = value.length();
+                if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
+                    year.setEditable(true);
+                    year.setText("");
+                } else {
+                    year.setEditable(false);
+                    year.setText("* Enter only numeric digits(0-9)");
+                }
+            }
+        });
         vin = new JTextField(16);
         vin.setBounds(100,130,200,30);
 
@@ -143,7 +160,12 @@ public class AddCustomer implements ActionListener {
         JLabel carOdometer = new JLabel("Odometer:");
         carOdometer.setBounds(0,220,100,30);
         frame.getContentPane().add(carOdometer);
+        JLabel carYear = new JLabel("Year:");
+        carYear.setBounds(0, 250, 100, 30);
+        frame.getContentPane().add(carYear);
         frame.getContentPane().add(odometer);
+        frame.getContentPane().add(year);
+
         frame.getContentPane().add(mainMenu);
         frame.getContentPane().add(submit);
         frame.getContentPane().repaint();
@@ -164,7 +186,11 @@ public class AddCustomer implements ActionListener {
             if(!odometer.getText().isEmpty()){
                 odometerInt= Integer.parseInt(odometer.getText());
             }
-            Car car = new Car(vin.getText(),make.getText(),model.getText(), LocalDate.now(),odometerInt);
+            int yearInt = 0;
+            if(!year.getText().isEmpty()){
+                yearInt= Integer.parseInt(year.getText());
+            }
+            Car car = new Car(vin.getText(),make.getText(),model.getText(), yearInt,odometerInt);
             if(car.isComplete()){
                 customer.addCar(car);
             }
