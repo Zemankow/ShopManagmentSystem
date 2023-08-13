@@ -10,11 +10,8 @@ public class Main {
     static JFrame frame;
 
     public static void main(String[] args) {
-    {
         shop =  new Shop(5);
         OpeningWindow();
-    }
-
     }
     private static void OpeningWindow(){
         frame = new JFrame();
