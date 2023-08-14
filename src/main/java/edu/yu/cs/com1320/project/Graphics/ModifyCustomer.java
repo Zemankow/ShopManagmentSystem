@@ -56,25 +56,31 @@ public class ModifyCustomer  implements ActionListener {
 
         addCar = new JButton("Add Car");
 
-        addCar.addActionListener(this);
-        modify.addActionListener(this);
-
         for(Car car: customer.getCars()){
             carHashtable.put(car.toString(),car);
         }
         JComboBox maintanceCurrent = new JComboBox(carHashtable.keySet().toArray());
         maintanceCurrent.addActionListener(this);
+        remove.setBounds(0,100,100,30);
+        mainMenu.setBounds(100,100,100,30);
+        modify.setBounds(200,100,100,30);
+        addMaintenance.setBounds(300,100,150,30);
+        addCar.setBounds(450,100,100,30);
         remove.addActionListener(this);
+
         mainMenu.addActionListener(this);
 
+
+        addCar.addActionListener(this);
+        modify.addActionListener(this);
 
 
         name = new JTextField(16);
         name.setText(customer.getName());
-        name.setBounds(100,0,200,30);
+        name.setBounds(100,0,100,30);
         address = new JTextField(16);
 
-        address.setBounds(100,30,200,30);
+        address.setBounds(100,30,100,30);
         address.setText(customer.getAddress());
 
         NumberFormat format = NumberFormat.getInstance();
@@ -87,7 +93,7 @@ public class ModifyCustomer  implements ActionListener {
         formatter.setCommitsOnValidEdit(true);
         phoneNumber = new JFormattedTextField(formatter);
         phoneNumber.setText(String.valueOf(customer.getPhoneNumber()));
-        phoneNumber.setBounds(100,60,200,30);
+        phoneNumber.setBounds(100,60,100,30);
 
         phoneNumber.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent ke) {
@@ -109,6 +115,8 @@ public class ModifyCustomer  implements ActionListener {
         frame.getContentPane().add(nameLabel);
         frame.getContentPane().add(name);
         JLabel addressLabel = new JLabel("Address:");
+        frame.getContentPane().add(phoneNumber);
+
         addressLabel.setBounds(0,30,100,30);
         frame.getContentPane().add(addressLabel);
 
@@ -117,13 +125,7 @@ public class ModifyCustomer  implements ActionListener {
         phoneNumberLabel.setBounds(0,60,100,30);
         frame.getContentPane().add(phoneNumberLabel);
 
-        frame.getContentPane().add(phoneNumber);
-        //Set up the picture.
-        frame.getContentPane().setFont(frame.getContentPane().getFont().deriveFont(Font.ITALIC));
 
-        //The preferred size is hard-coded to be the width of the
-        //widest image and the height of the tallest image + the border.
-        //A real program would compute this.
 
 
         //Lay out the demo.
