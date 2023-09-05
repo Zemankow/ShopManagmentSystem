@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Car implements Comparable<Car>{
     private String vin, make, model;
-    private LocalDate year;
+    private int year;
     private LocalDate carNeeded;
     private int odometer;
     private List<MaintenanceJob> previous;
@@ -17,7 +17,7 @@ public class Car implements Comparable<Car>{
 
 
 
-    public Car(String vin, String make, String model,LocalDate year, int odometer){
+    public Car(String vin, String make, String model, int year, int odometer){
 
         this.vin = vin;
         this.make = make;
@@ -71,11 +71,11 @@ public class Car implements Comparable<Car>{
     public List<MaintenanceJob> getRecommendedMaintenance() {
         return List.copyOf(recommended);
     }
-    public LocalDate getYear(){
+    public int getYear(){
         return year;
     }
     public boolean isComplete(){
-        if(vin.isEmpty()||make.isEmpty()||model.isEmpty()||year==null){
+        if(vin.isEmpty()||make.isEmpty()||model.isEmpty()||year==0){
             return false;
         }
         return true;
@@ -128,11 +128,7 @@ public class Car implements Comparable<Car>{
 
     @Override
     public String toString() {
-        int yearInt =0;
-        if(year!=null) {
-            yearInt = year.getYear();
-        }
-        return make + "," + model + "," + yearInt + "," + vin;
+        return make + "," + model + "," + year + "," + vin;
     }
 
     @Override
@@ -143,7 +139,7 @@ public class Car implements Comparable<Car>{
             if(((Car) obj).vin.equals(this.vin)
                 && ((Car) obj).make.equals(this.make)
                 &&((Car) obj).model.equals(this.model)
-                && ((Car) obj).year.equals(this.year)){
+                && ((Car) obj).year == this.year){
                 return true;
             }
         }
