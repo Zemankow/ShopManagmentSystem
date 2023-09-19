@@ -19,24 +19,3 @@ Data is rarely duplicated and we use extends to make our code more concise and u
 
 As you can see, our main data types, Cars and Customers, are located in the base class: Shop. People are abstract and thus not instantiated directly, but their core information is used by Customers (ie inheritance). Customers have a personal list of Cars which they own. Since Mechanics are like Customers, in that they may work on their own cars, they are extended from Customers and have additional, pertinent employee information.
 Cars have vehicle information and previous, current, and recommended MaintenanceJobs. MaintenanceJobs have a full transcript of the customer’s report, mechanic’s notes, and any changes made to the order.
- 
-
-Trivial getters and setters not included
-SHOP
-getCustomers() – gets list of customers
-makeNewWorkOrder() – Takes in a car, Maintenance Type (ie oil, brakes, etc) and original customers complaint. Searches customer cars if already stored and passes in the customer’s instance of car. Calls addMaintenance() in Car to add maintenance within the Car class.
-CAR
-makeNewWorkOrder() – Takes in Maintenance Type (ie oil, brakes, etc) and original customers complaint and creates a new order to attach to this car
-getPreviousMaintenance() – get history
-getRecomendedMaintenance() – not implemented yet :(
-MAINTENANCEJOB
-getMechanics() – gets list of mechanics who worked on this order
-updateMechanicNotes() – adds notes on to a running list of the history of this order 
-toString() – a full transcript, including time stamps, of all happenings (Creation, status changes, adding notes, release, etc)
-CUSTOMER
-addCar() – adds a car to this customer
-removeCar() – k’MashMao
-MECHANIC
-getYearHired() – gets year mechanic was hired
-getYearsOnJob() – get years of experience
-
