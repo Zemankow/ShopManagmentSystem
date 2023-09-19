@@ -16,6 +16,3 @@ Once the mechanic finishes the job, he will write in what he did and if there wa
 # DATA MODEL
 Data is rarely duplicated and we use extends to make our code more concise and usable. The following is a diagram of how our classes interact with each other. 
 ![image](https://github.com/Zemankow/ShopManagmentSystem/assets/36213811/cf4a3b79-c4ae-46cf-9b04-ac2472da75f9)
-
-As you can see, our main data types, Cars and Customers, are located in the base class: Shop. People are abstract and thus not instantiated directly, but their core information is used by Customers (ie inheritance). Customers have a personal list of Cars which they own. Since Mechanics are like Customers, in that they may work on their own cars, they are extended from Customers and have additional, pertinent employee information.
-Cars have vehicle information and previous, current, and recommended MaintenanceJobs. MaintenanceJobs have a full transcript of the customer’s report, mechanic’s notes, and any changes made to the order.
