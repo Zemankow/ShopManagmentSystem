@@ -22,7 +22,7 @@ public class ShopTest {
     }
 
     private Car makeCar() {
-        return new Car("4T1B11HK17845", "Toyota", "Camry", LocalDate.of(2019, 7, 1), 23000);
+        return new Car("4T1B11HK17845", "Toyota", "Camry", 2019, 23000);
     }
 
     private Customer makeCustomer() {
